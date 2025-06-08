@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarathy Group - Employment Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #1e5799, #207cca, #2989d8, #1e5799);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            position: relative;
+            max-width: 900px;
+            width: 100%;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Company Header Styles */
+        .company-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f4f8;
+            position: relative;
+        }
+        
+        .company-logo {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #1e5799, #2989d8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .company-logo::before {
+            content: "SG";
+            font-size: 60px;
+            font-weight: 800;
+            opacity: 0.15;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .company-name {
+            font-size: 2.5rem;
+            color: #1e5799;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .company-name:after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: #2989d8;
+            border-radius: 2px;
+        }
+        
+        .company-details {
+            margin-top: 25px;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .company-details strong {
+            color: #1e5799;
+            font-weight: 600;
+        }
+        
+        /* Form Styles */
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding: 15px;
+            background: linear-gradient(to right, rgba(30, 87, 153, 0.1), rgba(41, 137, 216, 0.1));
+            border-radius: 8px;
+        }
+        
+        .form-header h2 {
+            font-size: 2rem;
+            color: #1e5799;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .form-header h2:after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #2989d8;
+            border-radius: 2px;
+        }
+        
+        .form-header p {
+            color: #555;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        
+        .input-box {
+            margin-bottom: 18px;
+        }
+        
+        .input-box label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        
+        .input-box input, 
+        .input-box textarea, 
+        .input-box select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background: #f9fbfd;
+        }
+        
+        .input-box input:focus, 
+        .input-box textarea:focus, 
+        .input-box select:focus {
+            border-color: #2989d8;
+            box-shadow: 0 0 0 3px rgba(41, 137, 216, 0.2);
+            outline: none;
+            background: #fff;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        th {
+            background-color: #1e5799;
+            color: white;
+            font-weight: 600;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: #f9fbfd;
+        }
+        
+        td input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            background: #fff;
+            transition: all 0.2s;
+        }
+        
+        td input:focus {
+            border-color: #2989d8;
+            box-shadow: 0 0 0 2px rgba(41, 137, 216, 0.2);
+            outline: none;
+        }
+        
+        .form-section {
+            margin-top: 35px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        
+        h3 {
+            color: #1e5799;
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        h3:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 25px;
+            background: #2989d8;
+            border-radius: 3px;
+        }
+        
+        h3 i {
+            margin-right: 10px;
+            color: #2989d8;
+        }
+        
+        .form button {
+            height: 55px;
+            width: 100%;
+            margin-top: 30px;
+            background: linear-gradient(to right, #1e5799, #2989d8);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(30, 87, 153, 0.3);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .form button:hover {
+            background: linear-gradient(to right, #16467e, #2071b8);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 87, 153, 0.4);
+        }
+        
+        .form button:active {
+            transform: translateY(0);
+        }
+        
+        .required::after {
+            content: " *";
+            color: #e74c3c;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .section-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #1e5799;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .form-note {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #2989d8;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .signature-area {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .signature-box {
+            width: 45%;
+        }
+        
+        .signature-box label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .signature-placeholder {
+            height: 80px;
+            border: 1px dashed #aaa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            background: #f9fbfd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .signature-placeholder:hover {
+            background: #edf5ff;
+            border-color: #2989d8;
+            color: #2989d8;
+        }
+        
+        .declaration {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        
+        .declaration p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .declaration label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .company-name {
+                font-size: 2rem;
+            }
+            
+            .signature-area {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .signature-box {
+                width: 100%;
+            }
+        }
+        
+        .form-footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .progress-container {
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            margin: 25px 0 15px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 75%;
+            background: linear-gradient(to right, #1e5799, #2989d8);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <!-- Sarathy Group Header -->
+        <div class="company-header">
+            <div class="company-logo">SARATHY GROUP</div>
+            <h1 class="company-name">Sarathy Group</h1>
+            <div class="company-details">
+                <p><strong>HR Department</strong></p>
+                <p>Head Office: Sarathy HR Department, Kollam, Kerala</p>
+                <p>Phone: +91 9037223665</p>
+                <p>Email: hr@sarathygroup.com</p>
+                <p>Website: www.sarathygroup.com</p>
+            </div>
+        </div>
+        
+        <!-- Application Form -->
+        <div class="form-header">
+            <h2>Employment Application</h2>
+            <p>Complete all sections to apply for the position</p>
+            
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            <p>Application Progress: 75% Complete</p>
+        </div>
+        
+        <form class="form">
+            <!-- Basic Information -->
+            <div class="form-section">
+                <h3><span class="section-number">1</span> <i class="fas fa-user"></i> Basic Information</h3>
+                
+                <div class="input-box">
+                    <label class="required">Post Applied For</label>
+                    <input type="text" name="post_applied" placeholder="e.g., Marketing Manager" required>
+                </div>
+                
+                <div class="input-box">
+                    <label class="required">Full Name</label>
+                    <input type="text" name="full_name" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="grid-2">
+                    <div class="input-box">
+                        <label class="required">Age</label>
+                        <input type="number" name="age" required min="18" max="65" placeholder="e.g., 28">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label class="required">Date of Birth</label>
+                        <input type="date" name="dob" required>
+                    </div>
+                </div>
+                
+                <div class="grid-2">
+                    <div class="input-box">
+                        <label class="required">Height (cm)</label>
+                        <input type="text" name="height" placeholder="e.g., 175" required>
+                    </div>
+                    
+                    <div class="input-box">
+                        <label class="required">Weight (kg)</label>
+                        <input type="text" name="weight" placeholder="e.g., 70" required>
+                    </div>
+                </div>
+                
+                <div class="grid-3">
+                    <div class="input-box">
+                        <label class="required">Blood Group</label>
+                        <input type="text" name="blood_group" placeholder="e.g., O+" required>
+                    </div>
+                    
+                    <div class="input-box">
+                        <label class="required">Nationality</label>
+                        <input type="text" name="nationality" placeholder="e.g., Indian" required>
+                    </div>
+                    
+                    <div class="input-box">
+                        <label class="required">Gender</label>
+                        <select name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="grid-2">
+                    <div class="input-box">
+                        <label class="required">Religion</label>
+                        <input type="text" name="religion" placeholder="e.g., Hindu" required>
+                    </div>
+                    
+                    <div class="input-box">
+                        <label class="required">Place of Birth</label>
+                        <input type="text" name="place_of_birth" placeholder="e.g., Kollam" required>
+                    </div>
+                </div>
+                
+                <div class="grid-2">
+                    <div class="input-box">
+                        <label class="required">Mobile No</label>
+                        <input type="tel" name="mobile" placeholder="e.g., +91 9876543210" required>
+                    </div>
+                    
+                    <div class="input-box">
+                        <label class="required">Email Address</label>
+                        <input type="email" name="email" placeholder="e.g., yourname@example.com" required>
+                    </div>
+                </div>
+                
+                <div class="grid-2">
+                    <div class="input-box">
+                        <label class="required">Father’s / Husband’s Name</label>
+                        <input type="text" name="guardian_name" placeholder="Enter guardian's name" required>
+                    </div>
+                    
+                    <div class="input-box">
+                        <label class="required">Occupation</label>
+                        <input type="text" name="guardian_occupation" placeholder="e.g., Business" required>
+                    </div>
+                </div>
+                
+                <div class="grid-2">
+                    <div class="input-box">
+                        <label class="required">Marital Status</label>
+                        <select name="marital_status" required>
+                            <option value="">Select Status</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                            <option value="Widowed">Widowed</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-box">
+                        <label class="required">Languages Known</label>
+                        <input type="text" name="languages_known" placeholder="e.g., English, Malayalam" required>
+                    </div>
+                </div>
+                
+                <div class="grid-2">
+                    <div class="input-box">
+                        <label class="required">Emergency Contact Name</label>
+                        <input type="text" name="emergency_name" placeholder="Contact person name" required>
+                    </div>
+                    
+                    <div class="input-box">
+                        <label class="required">Emergency Contact No</label>
+                        <input type="tel" name="emergency_contact" placeholder="Emergency phone number" required>
+                    </div>
+                </div>
+                
+                <div class="input-box">
+                    <label class="required">Relation to Emergency Contact</label>
+                    <input type="text" name="relation" placeholder="e.g., Father, Spouse" required>
+                </div>
+            </div>
+
+            <!-- Family Details -->
+            <div class="form-section">
+                <h3><span class="section-number">2</span> <i class="fas fa-users"></i> Family Details</h3>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Relation</th>
+                        <th>Age</th>
+                        <th>Occupation</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="fam_name1" placeholder="Full name" required></td>
+                        <td><input type="text" name="fam_relation1" placeholder="e.g., Father" required></td>
+                        <td><input type="number" name="fam_age1" required min="1" placeholder="Age"></td>
+                        <td><input type="text" name="fam_job1" placeholder="Occupation" required></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="fam_name2" placeholder="Full name" required></td>
+                        <td><input type="text" name="fam_relation2" placeholder="e.g., Mother" required></td>
+                        <td><input type="number" name="fam_age2" required min="1" placeholder="Age"></td>
+                        <td><input type="text" name="fam_job2" placeholder="Occupation" required></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="fam_name3" placeholder="Full name"></td>
+                        <td><input type="text" name="fam_relation3" placeholder="e.g., Spouse"></td>
+                        <td><input type="number" name="fam_age3" placeholder="Age"></td>
+                        <td><input type="text" name="fam_job3" placeholder="Occupation"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="fam_name4" placeholder="Full name"></td>
+                        <td><input type="text" name="fam_relation4" placeholder="e.g., Child"></td>
+                        <td><input type="number" name="fam_age4" placeholder="Age"></td>
+                        <td><input type="text" name="fam_job4" placeholder="Occupation"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Educational Qualification -->
+            <div class="form-section">
+                <h3><span class="section-number">3</span> <i class="fas fa-graduation-cap"></i> Educational Qualification</h3>
+                <table>
+                    <tr>
+                        <th>Course</th>
+                        <th>Institution</th>
+                        <th>Year</th>
+                        <th>Grade/Percentage</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="course1" placeholder="e.g., B.Tech" required></td>
+                        <td><input type="text" name="inst1" placeholder="College/University" required></td>
+                        <td><input type="text" name="year1" placeholder="e.g., 2015-2019" required></td>
+                        <td><input type="text" name="grade1" placeholder="e.g., 78%" required></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="course2" placeholder="e.g., 12th" required></td>
+                        <td><input type="text" name="inst2" placeholder="School/College" required></td>
+                        <td><input type="text" name="year2" placeholder="e.g., 2013-2015" required></td>
+                        <td><input type="text" name="grade2" placeholder="e.g., 92%" required></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="course3" placeholder="e.g., Diploma"></td>
+                        <td><input type="text" name="inst3" placeholder="Institution"></td>
+                        <td><input type="text" name="year3" placeholder="Year"></td>
+                        <td><input type="text" name="grade3" placeholder="Grade"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="course4" placeholder="e.g., Certification"></td>
+                        <td><input type="text" name="inst4" placeholder="Institution"></td>
+                        <td><input type="text" name="year4" placeholder="Year"></td>
+                        <td><input type="text" name="grade4" placeholder="Grade"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Experience Details -->
+            <div class="form-section">
+                <h3><span class="section-number">4</span> <i class="fas fa-briefcase"></i> Experience Details</h3>
+                <table>
+                    <tr>
+                        <th>Company</th>
+                        <th>Designation</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Duration</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="exp_company1" placeholder="Company name" required></td>
+                        <td><input type="text" name="exp_designation1" placeholder="e.g., Manager" required></td>
+                        <td><input type="date" name="exp_from1" required></td>
+                        <td><input type="date" name="exp_to1" required></td>
+                        <td><input type="text" name="exp_duration1" placeholder="e.g., 2 years" required></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="exp_company2" placeholder="Company name"></td>
+                        <td><input type="text" name="exp_designation2" placeholder="Designation"></td>
+                        <td><input type="date" name="exp_from2"></td>
+                        <td><input type="date" name="exp_to2"></td>
+                        <td><input type="text" name="exp_duration2" placeholder="Duration"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="exp_company3" placeholder="Company name"></td>
+                        <td><input type="text" name="exp_designation3" placeholder="Designation"></td>
+                        <td><input type="date" name="exp_from3"></td>
+                        <td><input type="date" name="exp_to3"></td>
+                        <td><input type="text" name="exp_duration3" placeholder="Duration"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- For Office Use Only -->
+            <div class="form-section">
+                <h3><span class="section-number">5</span> <i class="fas fa-building"></i> For Office Use Only</h3>
+                <table>
+                    <tr>
+                        <th>Reference</th>
+                        <th>Remarks</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="ref1" placeholder="Reference 1"></td>
+                        <td><input type="text" name="remark1" placeholder="Remarks"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="ref2" placeholder="Reference 2"></td>
+                        <td><input type="text" name="remark2" placeholder="Remarks"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Declaration Section -->
+            <div class="declaration">
+                <h3><i class="fas fa-file-signature"></i> Declaration</h3>
+                <p>I hereby declare that all the information provided in this application is true, complete, and accurate to the best of my knowledge. I understand that any false statements or omissions may lead to disqualification or termination of employment.</p>
+                
+                <div class="signature-area">
+                    <div class="signature-box">
+                        <label>Applicant Signature</label>
+                        <div class="signature-placeholder">
+                            <i class="fas fa-signature"></i> Click to sign
+                        </div>
+                    </div>
+                    
+                    <div class="signature-box">
+                        <label>Date</label>
+                        <input type="date" name="signature_date" required>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit"><i class="fas fa-paper-plane"></i> Submit Application</button>
+            
+            <div class="form-note">
+                <p><strong>Note:</strong> After submitting this form, our HR team will contact you within 3-5 business days. Make sure all provided information is accurate.</p>
+            </div>
+        </form>
+        
+        <div class="form-footer">
+            <p>© 2023 Sarathy Group. All Rights Reserved. | HR Department</p>
+            <p>Confidential Application Document</p>
+        </div>
+    </section>
+    
+    <script>
+        // Simple form validation and progress indicator
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.form');
+            const requiredFields = form.querySelectorAll('[required]');
+            const progressBar = document.querySelector('.progress-bar');
+            
+            // Update progress bar based on filled required fields
+            function updateProgress() {
+                let filled = 0;
+                requiredFields.forEach(field => {
+                    if (field.value.trim() !== '') {
+                        filled++;
+                    }
+                });
+                
+                const progress = (filled / requiredFields.length) * 100;
+                progressBar.style.width = progress + '%';
+                
+                // Update progress text
+                const progressText = document.querySelector('.form-header p:last-child');
+                if (progressText) {
+                    progressText.textContent = `Application Progress: ${Math.round(progress)}% Complete`;
+                }
+            }
+            
+            // Add input event listeners to required fields
+            requiredFields.forEach(field => {
+                field.addEventListener('input', updateProgress);
+            });
+            
+            // Initial progress update
+            updateProgress();
+            
+            // Form submission handler
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simple validation
+                let valid = true;
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        valid = false;
+                        field.style.borderColor = '#e74c3c';
+                    } else {
+                        field.style.borderColor = '#ddd';
+                    }
+                });
+                
+                if (valid) {
+                    alert('Application submitted successfully! Our HR team will contact you soon.');
+                    form.reset();
+                    progressBar.style.width = '0%';
+                    document.querySelector('.form-header p:last-child').textContent = 'Application Progress: 0% Complete';
+                } else {
+                    alert('Please fill all required fields marked with *');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
